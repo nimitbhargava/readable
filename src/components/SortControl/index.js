@@ -1,37 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { faLongArrowAltDown, faLongArrowAltUp } from '@fortawesome/fontawesome-free-solid'
-import FontAwesomeIcon from '@fortawesome/react-fontawesome';
 
 import * as sortActions from '../../actions/sort';
 
 import './SortControl.css';
-
-const SortButtonPropTypes = {
-  orderby: PropTypes.string,
-  criteria: PropTypes.string,
-  sort: PropTypes.oneOf(['asc', 'desc']),
-  onClickHandler: PropTypes.func
-};
-
-class SortButton extends Component {
-  render () {
-    const { orderby, sort, criteria, onClickHandler } = this.props;
-
-    return (
-      <button type="button"
-              className={ "btn " + (orderby === criteria ? "btn-primary": "btn-secondary")}
-              onClick={ () => { onClickHandler(criteria, sort) } }
-      >
-        {orderby === criteria && (
-          <FontAwesomeIcon iconDefinition={ sort === 'asc' ? faLongArrowAltUp : faLongArrowAltDown} />
-        )}
-        {criteria}
-      </button>
-    );
-  }
-}
+import SortButton from '../SortButton';
+import SortButtonPropTypes from '../SortButton';
 
 SortButton.propTypes = SortButtonPropTypes;
 
